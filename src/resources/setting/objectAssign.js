@@ -1,7 +1,6 @@
-export default (s,e) => {
-    var e = e || {};
-    for(var i in s){
-        e[i] = s[i];
+export default (s, e = {}) => {
+    for (var i in s) {
+        e[i] = s[i]
     }
-    return e;
+    return e
 }

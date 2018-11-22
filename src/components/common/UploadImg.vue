@@ -19,7 +19,7 @@
 
 <script>
 import { Indicator, Toast } from 'mint-ui';
-import imgCompress from "@/util/tools/imgCompress.js"
+import imgCompress from '@/util/tools/imgCompress.js';
 export default {
     name: 'UploadImg',
     /* 外部引入的值 */
@@ -27,12 +27,10 @@ export default {
     data() {
         return {
             msg: 'uploadImg',
-            userImg: "",
-        }
+            userImg: ''
+        };
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
         upLoadImg(e) {
             Indicator.open({
@@ -41,33 +39,41 @@ export default {
             let file = e.target.files || e.dataTransfer.files;
             if (!file.length) {
                 this.indicatorClose();
-                return
-            };
-            if (file[0].type.indexOf("image") < 0) {
-                Toast({ message: '上传了非图片', position: 'middle', duration: 1500 });
+                return;
+            }
+            if (file[0].type.indexOf('image') < 0) {
+                Toast({
+                    message: '上传了非图片',
+                    position: 'middle',
+                    duration: 1500
+                });
                 this.indicatorClose();
                 return;
             }
             if (file[0].size > 5 * 1000000) {
-                Toast({ message: '上传文件过大', position: 'middle', duration: 1500 });
+                Toast({
+                    message: '上传文件过大',
+                    position: 'middle',
+                    duration: 1500
+                });
                 this.indicatorClose();
                 return;
             }
-            imgCompress(file[0],(base64,blob,imgFile) => {
+            imgCompress(file[0], (base64, blob, imgFile) => {
                 /* 获取压缩后的图片 base64格式 blob格式 和imgFile */
                 /* 建议只是用blob格式上传图片 base64文件过大在某些手机上会上传失败 */
                 this.userImg = base64;
                 Indicator.close();
-                this.$emit('changeImg',{base64,blob,imgFile})
-            })
+                this.$emit('changeImg', { base64, blob, imgFile });
+            });
         },
         indicatorClose() {
             setTimeout(() => {
                 Indicator.close();
-            }, 150)
-        },
-    },
-}
+            }, 150);
+        }
+    }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -105,11 +111,11 @@ export default {
                 z-index: 2;
                 width: 100%;
             }
-            .userImg{
+            .userImg {
                 @include mask();
                 z-index: 1;
-                width:100%;
-                height:100%;
+                width: 100%;
+                height: 100%;
             }
         }
         .leftCont:after {

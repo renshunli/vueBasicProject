@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import appConfigs from '@/config.js'
 
-
 let getevent = () => {
     var Event = new Vue()
     return Event
@@ -9,13 +8,13 @@ let getevent = () => {
 const vueEvent = getevent()
 
 const utils = {
-    vuethis: {}, //vue的this
+    vuethis: {}, // vue的this
     vueEvent: vueEvent,
-    //打电话
+    // 打电话
     realcall(e) {
         window.location.href = 'tel:' + e.name
     },
-    //处理空
+    // 处理空
     handlenull(item) {
         $.each(item, function(key, val) {
             if (val == null) {
@@ -30,7 +29,7 @@ const utils = {
         } else {
             var _this = this
             var currentposition = {}
-            //获取当前位置
+            // 获取当前位置
             var geolocation = new BMap.Geolocation()
             geolocation.getCurrentPosition(
                 function(r) {
@@ -49,12 +48,12 @@ const utils = {
         }
     },
     getUrlParam(name) {
-        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)') //构造一个含有目标参数的正则表达式对象
-        var r = window.location.search.substr(1).match(reg) //匹配目标参数
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)') // 构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg) // 匹配目标参数
         if (r != null) return r[2]
-        return null //返回参数值
+        return null // 返回参数值
     },
-    //获取七天日期
+    // 获取七天日期
     getSevenDate(date, lasttime) {
         var lastarr = lasttime.split(':')
         var lasth = parseInt(lastarr[0])
@@ -62,7 +61,7 @@ const utils = {
         var thirtyagoh = ''
         var thirtyagom = ''
         var _arr = []
-        //提前半小时就从明天开始
+        // 提前半小时就从明天开始
         if (lastm >= 30) {
             thirtyagoh = lasth
             thirtyagom = lastm - 30
@@ -87,7 +86,7 @@ const utils = {
         }
         return _arr
     },
-    //缓存到cookie
+    // 缓存到cookie
     handleCookieGet(c_name) {
         if (document.cookie.length > 0) {
             var c_start = document.cookie.indexOf(c_name + '=')
@@ -116,11 +115,11 @@ const utils = {
             (expiredays == null ? '' : ';expires=' + exdate.toGMTString()) +
             '; path=/'
     },
-    //缓存到本地
+    // 缓存到本地
     setlocal(name, obj) {
         localStorage.setItem(name, JSON.stringify(obj))
     },
-    //获取本地
+    // 获取本地
     getlocal(name) {
         let data = localStorage.getItem(name)
         if (data != null && data != '') {
@@ -134,7 +133,7 @@ const utils = {
             return ''
         }
     },
-    //禁止默认滚动条滚动，用于弹出窗
+    // 禁止默认滚动条滚动，用于弹出窗
     forbidscroll() {
         document.body.style.overflow = 'hidden'
         document.getElementById('physical').style.overflow = 'hidden'
@@ -143,7 +142,7 @@ const utils = {
         document.body.style.overflow = ''
         document.getElementById('physical').style.overflow = ''
     },
-    //提示中间toast
+    // 提示中间toast
     toastinfo(msg) {
         Vue.$toast({
             message: msg,
@@ -151,20 +150,20 @@ const utils = {
             duration: appConfigs.toastime
         })
     },
-    //zepto扩展
+    // zepto扩展
     scrollTo() {
         $.fn.scrollTo = function(options) {
             var defaults = {
-                toT: 0, //滚动目标位置
-                durTime: 500, //过渡动画时间
-                delay: 30, //定时器时间
-                callback: null //回调函数
+                toT: 0, // 滚动目标位置
+                durTime: 500, // 过渡动画时间
+                delay: 30, // 定时器时间
+                callback: null // 回调函数
             }
             var opts = $.extend(defaults, options),
                 timer = null,
                 _this = this,
-                curTop = _this.scrollTop(), //滚动条当前的位置
-                subTop = opts.toT - curTop, //滚动条目标位置和当前位置的差值
+                curTop = _this.scrollTop(), // 滚动条当前的位置
+                subTop = opts.toT - curTop, // 滚动条目标位置和当前位置的差值
                 index = 0,
                 dur = Math.round(opts.durTime / opts.delay),
                 smoothScroll = function(t) {
@@ -175,11 +174,10 @@ const utils = {
                         window.clearInterval(timer)
                         if (
                             opts.callback &&
-                            typeof opts.callback == 'function'
+                            typeof opts.callback === 'function'
                         ) {
                             opts.callback()
                         }
-                        return
                     } else {
                         _this.scrollTop(curTop + index * per)
                     }
@@ -190,14 +188,14 @@ const utils = {
             return _this
         }
     },
-    //弹出提示框
+    // 弹出提示框
     alertip(val) {
         vueEvent.$alert(val, '提示', {
             confirmButtonText: '确定',
             callback: action => {}
         })
     },
-    //带取消的两个按钮
+    // 带取消的两个按钮
     confirmtip(title, info, btntext1, btntext2, suc, cancel) {
         vueEvent
             .$confirm(info, title || '提示', {
@@ -212,7 +210,7 @@ const utils = {
                 cancel && cancel()
             })
     },
-    //html片段
+    // html片段
     alerthtmltip(
         title,
         htmlstr,
@@ -243,22 +241,22 @@ const utils = {
                 cancel && cancel(params)
             })
     },
-    //登录错误提示
+    // 登录错误提示
     errortip(info) {
         vueEvent.$message.error(info)
     },
-    //成功提示
+    // 成功提示
     successtip(info) {
-        vueEvent.$message({message: info,type: 'success'});
+        vueEvent.$message({ message: info, type: 'success' })
     },
-    //警告提示
+    // 警告提示
     warningtip(info) {
         vueEvent.$message({
             message: info,
             type: 'warning'
         })
     },
-    //身份证截取出生日期
+    // 身份证截取出生日期
     getBirthdayFromIdCard(idCard) {
         idCard = idCard.toString()
         var birthday = ''

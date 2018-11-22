@@ -20,14 +20,14 @@ export default {
     },
     methods: {
 
-    },
+    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.hello{
-    border:1px solid;
+.hello {
+    border: 1px solid;
     border-radius: 15px;
 }
 h1,

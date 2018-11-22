@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <router-view/>
+        <router-view />
     </div>
 </template>
 
@@ -8,18 +8,18 @@
 export default {
     name: 'App',
     data() {
-        return {}
+        return {};
     },
     components: {},
-    created() { },
-    mounted() { },
+    created() {},
+    mounted() {},
     methods: {}
-}
+};
 </script>
 
 <style lang="scss">
 /* 全局resetCss 重置 */
-@import './assets/css/resetCss.css';
+@import "./assets/css/resetCss.css";
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

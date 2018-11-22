@@ -6,12 +6,12 @@ Vue.use(Router)
 
 export default new Router({
     routes: [
-        /*{ path: '*', component: NotFoundComponent },//404页面*/
+        /* { path: '*', component: NotFoundComponent },//404页面 */
         {
             path: '/',
             name: 'HomePage',
             component: HomePage,
-            title: "首页"
+            title: '首页'
         }
     ]
 })
