@@ -395,6 +395,9 @@
             }
         }
 
+        if(erOnline === undefined)
+            return;
+
         var firstLog = ErPro.getLocalStorage(FIRST_NAME);
         if (firstLog == undefined || firstLog == null) {
             ErPro.setLocalStorage(FIRST_NAME, 'true');
