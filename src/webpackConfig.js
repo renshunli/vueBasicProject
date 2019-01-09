@@ -4,7 +4,7 @@ module.exports = {
     //本地开发
     dev: {
         // 目录地址
-        assetsPublicPath: "/",
+        assetsPublicPath: "/h6/",
         proxyTable: {},
         host: "localhost",
         port: "8089"

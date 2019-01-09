@@ -20,19 +20,19 @@ export default setConfig({
     /* 不同环境配置 */
     setting: {
         localhost: {
-            URLWEBHTTP: 'http://localhost:8089/api'
+            URLWEBHTTP: '/'
         },
         testdev: {
-            URLWEBHTTP: 'http://www.baidu.com/testdev'
+            URLWEBHTTP: '/'
         },
         pro: {
-            URLWEBHTTP: 'http://www.baidu.com/pro'
+            URLWEBHTTP: '/'
         },
         dev: {
-            URLWEBHTTP: 'http://www.baidu.com/dev'
+            URLWEBHTTP: '/'
         },
         beta: {
-            URLWEBHTTP: 'http://www.baidu.com/bata'
+            URLWEBHTTP: '/'
         }
     },
     /* 通用配置 - 每个环境都有 */

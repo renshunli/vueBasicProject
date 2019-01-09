@@ -27,6 +27,7 @@ export default async (apiurl = '', params = {}, type = 'GET') => {
                 resolve(res);
             })
             .catch(err => {
+                console.log(err)
                 // util.vueEvent.$emit('disloading')
                 reject(err);
             });

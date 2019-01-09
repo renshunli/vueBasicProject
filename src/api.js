@@ -12,7 +12,7 @@ import vhttp from './modle/vueRequest'
  */
 
 // 请求百度接口获取数据
-export const getBaidu = params => vhttp('/baidu', params, 'GET')
+export const getBaidu = params => vhttp('message/error', params, 'GET')
 
 // 请求百度接口获取数据
-export const postBaidu = params => vhttp('/baidu', params, 'POST')
+export const postBaidu = params => vhttp('message/error', params, 'POST')

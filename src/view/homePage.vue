@@ -13,6 +13,7 @@
         <button v-on:click='getBaidu()'>6.点击发送get请求 并且打印config.js</button>
         <p>------------------------------</p>
         <button v-on:click='postBaidu()'>7.点击发送post请求</button>
+        <button v-on:click='errorTest()'>7.点击提交错误</button>
         <p>------------------------------</p>
         <p>--------- 通用组件样例 ---------</p>
         <p>------------------------------</p>
@@ -56,9 +57,13 @@ export default {
         UploadImg
     },
     mounted() {
+        console.log(this.a.toString());
         Toast('欢迎使用基础模板!本模板根据设计图输入2X,px即可，会自动转换rem。');
     },
     methods: {
+        errorTest() {
+            this.a.send();
+        },
         /* 使用mapMutaions遍历vuex里的mutations */
         ...mapMutations([
             'changeName'
@@ -67,9 +72,9 @@ export default {
             /* ajax请求演示 使用es7 async await */
             try {
                 var result = await getBaidu({ hehe: 1 });
-                console.log(result)
+                console.log(result[1].length);
             } catch (error) {
-                console.log(error);
+                window.erOnline.logger(error, 'homePage line 77');
             }
             /* 这里使用了config 会合成环境静态变量以及通用静态变量 */
             Toast('发送ajax请求，打印全局静态变量去控制台查看');
