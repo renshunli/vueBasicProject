@@ -23,11 +23,11 @@
     var DAY_TIME = 1000 * 60 * 60 * 24;
     var FIRST_NAME = 'firstMessage';
     var SECOND_NAME = 'secondMessage';
-    var SERVER_URL = 'https://weberror.zhiscity.com/message/addMessage';
+    var SERVER_URL = '/message/addMessage';
     var SWITCH_NAME = 'mySwitch';
     var SWITCH_ON = 'on';
     var SWITCH_OFF = 'off';
-    var SWITCH_URL = 'https://weberror.zhiscity.com/latestVisitors/getSwitchState';
+    var SWITCH_URL = '/latestVisitors/getSwitchState';
     /*
     Object opstions
     @pramas String name  项目名称
