@@ -155,19 +155,17 @@
         }
         if (window.axios != undefined && window.axios != null) {
             window.axios.interceptors.response.use(
-                data => {
+                function(data) {
                     return data;
                 },
-                err => {
+                function(err) {
                     var config = err.config;
                     var msg = err.message;
-                    var configMsg = `
-                                url: ${JSON.stringify(config.url)},
-                                params: ${JSON.stringify(config.params)} ,
-                                data: ${JSON.stringify(config.data)},
-                                method: ${config.method},
-                                headers: ${JSON.stringify(config.headers)}
-                        `;
+                    var configMsg = 'url:' + JSON.stringify(config.url) + ',' +
+                                'params:' + JSON.stringify(config.params)  + ',' +
+                                'data:' + JSON.stringify(config.data) + ',' +
+                                'method:' + config.method + ',' +
+                                'headers:' + JSON.stringify(config.headers);
                     _this.errorSend(msg, '', 0, 0, configMsg);
                     return Promise.resolve(err);
                 }
