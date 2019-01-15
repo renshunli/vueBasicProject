@@ -91,7 +91,7 @@
             method: "get",
             url: SWITCH_URL,
             data: {
-                name: this.name
+                name: encodeURIComponent(this.name)
             },
             async: true,
             success: function(res){
@@ -166,7 +166,8 @@
                                 'data:' + JSON.stringify(config.data) + ',' +
                                 'method:' + config.method + ',' +
                                 'headers:' + JSON.stringify(config.headers);
-                    _this.errorSend(msg, '', 0, 0, configMsg);
+                    if(err.message.indexOf('status code 403') === -1)
+                        _this.errorSend(msg, '', 0, 0, configMsg);
                     return Promise.resolve(err);
                 }
             );
@@ -231,7 +232,7 @@
 
     ErPro.errorQueuePush = function() {
         var m = this.map;
-        for (item in m) {
+        for (var item in m) {
             if (m[item].upload == undefined) {
                 m[item].upload = true;
                 this.Queue.push(m[item]);
@@ -451,8 +452,10 @@
         var xhr;
         if(window.XMLHttpRequest){
             xhr = new XMLHttpRequest();
+        }else if(window.ActiveXObject){
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
         }else{
-            xhr = new ActiveXObject();
+            alert('您的浏览器不支持ajax');
         }
         obj.data = params(obj.data);
 
