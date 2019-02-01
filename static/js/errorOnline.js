@@ -152,6 +152,25 @@
                     _this.errorSend(message, '', 0, 0, err.stack);
                 }
             };
+            if(window.Vue.http) {
+                if(!Vue.http.interceptors) return;
+                Vue.http.interceptors.push((request, next) => {
+                　　next((response) => {
+                        if(response.status === 200 || response.status === 302) {
+                            return response;
+                        }  else {
+                            var msg = response.statusText + "code:" + response.status;
+                            var configMsg = "url:" + response.url + ',' +
+                                            "params:" + JSON.stringify(request.params) + ',' +
+                                            'data:' + JSON.stringify(request.body) + ',' +
+                                            'method:' + JSON.stringify(request.method)  + ',' +
+                                            'headers:' + JSON.stringify(request.headers);
+                            _this.errorSend(msg, '', 0, 0, configMsg);
+                            return response // 必须返回
+                        }
+                    });
+                });
+            }
         }
         if (window.axios != undefined && window.axios != null) {
             window.axios.interceptors.response.use(
