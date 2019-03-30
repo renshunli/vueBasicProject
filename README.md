@@ -1,7 +1,9 @@
 # pro
 
 > A Vue.js project
+
 [![license-badge.svg](https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg)](./LICENSE)
+
 ####
 ## 本基础项目使用px布局 通过postcss 自动转换rem。 PX使用2x 按照设计图 宽750px直接写750即可。
 ## src目录
