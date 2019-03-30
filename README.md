@@ -1,3 +1,4 @@
+[![license-badge.svg](https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg)](./LICENSE)
 # pro
 
 > A Vue.js project
